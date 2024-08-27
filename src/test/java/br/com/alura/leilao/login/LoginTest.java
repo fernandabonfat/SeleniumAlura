@@ -21,6 +21,5 @@ public class LoginTest {
         Assert.assertEquals("fulano", browser.findElement(By.id("usuario-logado")).getText());
 
         browser.quit();
-
     }
 }
