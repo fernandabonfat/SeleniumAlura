@@ -20,5 +20,6 @@ public class LoginTest {
         Assert.assertFalse(browser.getCurrentUrl().equals("http://localhost:8080/login"));
         Assert.assertEquals("fulano", browser.findElement(By.id("usuario-logado")).getText());
 
+
     }
 }
