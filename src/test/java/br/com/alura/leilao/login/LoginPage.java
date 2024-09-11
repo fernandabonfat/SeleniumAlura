@@ -1,5 +1,6 @@
 package br.com.alura.leilao.login;
 
+import br.com.alura.leilao.leiloes.LeiloesPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -7,13 +8,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginPage {
 
-    public static final String URL = "http://localhost:8080/login";
+    public static final String URL_LOGIN = "http://localhost:8080/login";
     private WebDriver browser;
 
     public LoginPage() {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         this.browser = new ChromeDriver();
-        this.browser.navigate().to(URL);
+        this.browser.navigate().to(URL_LOGIN);
     }
 
     public void fechar() {
@@ -25,13 +26,13 @@ public class LoginPage {
         this.browser.findElement(By.name("password")).sendKeys(password);
     }
 
-    public void enviarFormulario() {
+    public LeiloesPage efetuarLogin() {
         this.browser.findElement(By.id("login-form")).submit();
-
+        return new LeiloesPage(browser);
     }
 
     public boolean isLoginPage() {
-        return browser.getCurrentUrl().equals(URL);
+        return browser.getCurrentUrl().equals(URL_LOGIN);
     }
 
     public String getUserName() {
@@ -51,6 +52,6 @@ public class LoginPage {
     }
 
     public boolean isLoginPageError() {
-        return browser.getCurrentUrl().equals(URL + "?error");
+        return browser.getCurrentUrl().equals(URL_LOGIN + "?error");
     }
 }

@@ -19,7 +19,7 @@ public class LoginTest {
     @Test
     public void deveriaEfetuarLoginComDadosValidos() {
         this.paginaDeLogin.prenncheFormularioDeLogin("fulano", "pass");
-        this.paginaDeLogin.enviarFormulario();
+        this.paginaDeLogin.efetuarLogin();
 
         Assertions.assertFalse(paginaDeLogin.isLoginPage());
         Assertions.assertEquals("fulano", paginaDeLogin.getUserName());
@@ -28,7 +28,7 @@ public class LoginTest {
     @Test //Testing correct username and wrong password
     public void testeLoginInvalido(){
         this.paginaDeLogin.prenncheFormularioDeLogin("fulano", "wrong-pass");
-        this.paginaDeLogin.enviarFormulario();
+        this.paginaDeLogin.efetuarLogin();
 
         Assertions.assertTrue(paginaDeLogin.isLoginPageError());
         Assertions.assertNull(paginaDeLogin.getUserName());
